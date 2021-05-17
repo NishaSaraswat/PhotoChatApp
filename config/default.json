@@ -1,0 +1,4 @@
+{
+    "mongoURL":"mongodb+srv://chatUser:123654@cluster0.slw2u.mongodb.net/Cluster0?retryWrites=true&w=majority",
+    "SecretKey": "Secret"
+}
