@@ -2,6 +2,7 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from "./Pages/LoginPage";
+import ProfilePage from './Pages/ProfilePage';
 
 function App() {
   return (
@@ -11,8 +12,8 @@ function App() {
         <>
             <Switch>
               <Route exact path="/login" component={Login}/>
-              {/* <Route exact path='/profile' component={Profile}/>
-              <Route exact path='/register' component={RegisterUser}/>
+              <Route exact path='/profile' component={ProfilePage}/>
+              {/*<Route exact path='/register' component={RegisterUser}/>
               */}
             </Switch>
         </>
