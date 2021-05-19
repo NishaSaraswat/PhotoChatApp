@@ -1,10 +1,11 @@
 import React from 'react'
-import Avatar from '../Components/Avatar'
+import Camera from '../Components/Camera';
+
 
 const ProfilePage = () => {
     return (
         <div className="profilePage">
-            <Avatar />
+            <Camera />
             <div className="profilePage-btns">
                 <button>My posts</button>
                 <button>Enter chatrooms</button>
