@@ -5,12 +5,14 @@ const fs = require('fs')
 const app = express();
 
 connectDB();
-
-app.use(express.json({extended:false}));
+//setup cross origen
+app.use(require("cors")());
+app.use(express.json({extended:true}));
 app.get('/', (req, res)=>res.send('Welcome to my chat app'));
-app.use('/api/users', require('./routes/users'));
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/userprofile', require('./routes/profile'));
+app.use('/api/register', require('./routes/register'));
+app.use('/api/login', require('./routes/login'));
+app.use('/api/profile', require('./routes/profile'));
+
 
 
 //----------camera server part-----------//
