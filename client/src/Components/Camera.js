@@ -12,11 +12,12 @@ const Camera = () => {
   const captureButton = useRef()
   const newCaptureButton = useRef()
   const postButton = useRef()
+  const imagePicker=useRef()
   const imagePickerArea=useRef()
   const locationDisplay=useRef()
+  const locationBtn=useRef()
   const savedPicture=useRef()
-
-
+  
   const toggleDisplay = (elementItem, displayStatus) => {
     elementItem.style = { display: displayStatus };
   }
@@ -155,26 +156,28 @@ const Camera = () => {
     return blob;
   }
   return (
-    <div>
+    <>
       <div>
         <video ref={videoPlayer} id="player" autoPlay style={{ display: 'block'}}></video>
         <canvas ref={canvas} id="canvas" width="240px" height="240px"></canvas>
+      </div>
+
+      <div className='camera-btns'>
         <button ref={captureButton} id="capture-btn" onClick={captureImage}>Capture</button>
         <button ref={newCaptureButton} id="new-capture-btn" onClick={initializeMedia}>Retake picture</button>
+        <button id="location-btn" onClick={getGeolocation} ref={locationBtn}>Get Location</button>
+        <div id="location-display" ref={locationDisplay}></div>
+        <button ref={postButton} id="post-btn" onClick={uploadPicture}>Post image</button>
       </div>
-      <div id="pick-image">
-        <input type="file" accept="image/*" id="image-picker" onChange={pickImage} />
-      </div>
 
-      <button id="location-btn" onClick={getGeolocation}>Get Location</button>
-      <div id="location-display" ref={locationDisplay}></div>
+        <div id="pick-image" ref={imagePickerArea}>
+          <input type="file" accept="image/*" id="image-picker" onChange={pickImage} ref={imagePicker}/>
+        </div>
+       {/*<p>Saved picture:</p>*/ } 
+        <img id="saved-picture" ref={savedPicture}/>
+      
 
-      <button ref={postButton} id="post-btn" onClick={uploadPicture}>Post image</button>
-
-      <p>Saved picture:</p>
-      <img id="saved-picture" ref={savedPicture}/>
-
-    </div>
+    </>
   )
 }
 

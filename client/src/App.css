@@ -1,10 +1,8 @@
-body{
-  background-color: #f3eaea;
-}
 
-.App {
+
+.profilePage {
   text-align: center;
-  color:rgb(20, 19, 19);
+  color:rgb(223, 219, 219);
 }
 
 .profilePage-btns{
@@ -38,3 +36,18 @@ body{
   transform: scale(-1, 1);
 }
 
+.camera-btns{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 8%;
+  margin-bottom: 5%;
+}
+.camera-btns button{
+  height:40px;
+  width:100px;
+  background-color: rgb(24, 23, 23);
+  color:rgb(224, 220, 220);
+  border-radius: 20%;
+}
