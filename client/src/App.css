@@ -1,10 +1,10 @@
 body{
-  /*background-color: #0C0B0B;*/
+  background-color: #f3eaea;
 }
 
 .App {
   text-align: center;
-  color:rgb(15, 1, 1);
+  color:rgb(20, 19, 19);
 }
 
 .profilePage-btns{
@@ -28,8 +28,9 @@ body{
 }
 
 #player {
-  width: 320px;
-  height: 240px;
+  width: 50%;
+  border-radius: 50%;
+  margin-left: 25%;
 }
 
 
@@ -37,13 +38,3 @@ body{
   transform: scale(-1, 1);
 }
 
-#capture-btn{
-  display:block;
-}
-#canvas, #new-capture-btn {
-  display: none;
-}
-
-#pick-image{
-  display:block;
-}
