@@ -2,8 +2,9 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from "./Pages/LoginPage";
-import ProfilePage from './Pages/ProfilePage';
+import ProfilePage from "./Pages/ProfilePage";
 import Home from './Pages/HomePage';
+import Registerpage from './Pages/RegisterPage';
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
               <Route exact path="/" component={Home}/>
               <Route exact path="/login" component={Login}/>
               <Route exact path='/profile' component={ProfilePage}/>
-              {/*<Route exact path='/register' component={RegisterUser}/>
-              */}
+              <Route exact path='/register' component={Registerpage}/>
+              
             </Switch>
         </>
         </Router>
