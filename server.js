@@ -17,7 +17,7 @@ app.use('/api/profile', require('./routes/profile'));
 
 //----------camera server part-----------//
 
-app.post('/api/upload', (req, res) => {
+app.post('/api/public/uploads', (req, res) => {
 
     const form = formidable();
    
@@ -34,13 +34,13 @@ app.post('/api/upload', (req, res) => {
       
 
       let fileData = fs.readFileSync(file.path)
-      fs.writeFileSync(__dirname + '/www/uploads/' + file.name, fileData)
+      fs.writeFileSync(__dirname + '/public/uploads/' + file.name, fileData)
   
       res.json({ fields, file });
     });
   });
   
-  app.use(express.static(__dirname + '/www'))
+  app.use(express.static(__dirname + '/public'))
 //----------camera server part-----------//
 
 const PORT = process.env.PORT || 5000;
