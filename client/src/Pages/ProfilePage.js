@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import avatar from '../images/avatar.jpeg'
 import { FcCompactCamera} from 'react-icons/fc'
+import Footer from "../Components/Footer"
 
 
 const ProfilePage = () => {
@@ -13,6 +14,7 @@ const ProfilePage = () => {
                 <button>My posts</button>
                 <button>Enter chatrooms</button>
                 <button>Log Out</button>
+                <Footer/>
             </div>
         </div>
 );
