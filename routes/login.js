@@ -5,7 +5,7 @@ const UserModel = require("../models/UserModel");
 const config = require("config");
 const {check , validationResult} = require('express-validator/check');
 const bcrypt = require('bcryptjs');
-const auth = require("../middlewares/auth");
+const auth = require("../middlewares/login");
 
 /**Private and users can access it after logging in */
 router.get("/", auth, async (req, res)=>{

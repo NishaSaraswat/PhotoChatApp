@@ -3,7 +3,7 @@ const router = express.Router();
 const {check, validationResult} = require("express-validator/check");
 const userModel = require('../models/UserModel');
 const userProfileModel = require('../models/UserProfileModel');
-const auth = require('../middlewares/auth');
+const auth = require('../middlewares/login');
 
 /**Show all user profile */
 router.get("/", auth, async (req, res)=>{

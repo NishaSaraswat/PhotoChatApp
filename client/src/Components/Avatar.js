@@ -1,10 +1,9 @@
 import React from 'react'
+import Camera from './Camera'
 
 const Avatar = () => {
     return (
-        <div>
-            <button>Avatar</button>
-        </div>
+        <Camera />
     )
 }
 
