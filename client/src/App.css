@@ -4,14 +4,23 @@
   text-align: center;
   color:rgb(223, 219, 219);
 }
+.avatar-spaceholder{
+  width:50%;
+  margin-top: 5%;
+}
 
+.camera-icon{
+  width:30px;
+  height:30px;
+  margin-left: -20px;
+  margin-top: 30px;
+}
 .profilePage-btns{
   display:flex;
   flex-direction: column;
   flex-wrap: wrap;
   width:80%;
   margin-left: 10%;
-  margin-top: 10%;
 }
 
 .profilePage-btns button{
@@ -26,9 +35,8 @@
 }
 
 #player {
-  width: 50%;
-  border-radius: 50%;
-  margin-left: 25%;
+  width: 100%;
+
 }
 
 
@@ -40,14 +48,14 @@
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 8%;
   margin-bottom: 5%;
+  width:100%;
 }
 .camera-btns button{
-  height:40px;
+  height:80px;
   width:100px;
   background-color: rgb(24, 23, 23);
   color:rgb(224, 220, 220);
-  border-radius: 20%;
 }

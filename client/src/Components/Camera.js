@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const Camera = () => {
 
-  let  [picture, setPicture] = useState();
-  let [address, setAddress] = useState({});
+  let picture;
+  let address;
   let fetchedLocation = { lat: 0, lng: 0 };
+  let [imageURL, setImageURL]=useState('')
 
   const videoPlayer = useRef()
   const canvas = useRef()
@@ -89,7 +90,7 @@ const Camera = () => {
   }
 
   const pickImage = (e) => {
-    setPicture(e.target.files[0])
+    picture=e.target.files[0]
   }
 
   const getGeolocation = () => {
@@ -131,7 +132,7 @@ const Camera = () => {
     formData.append('location', JSON.stringify(fetchedLocation))
     formData.append('address', JSON.stringify(address))
 
-  let res = await fetch('/www/upload', {
+  let res = await fetch('http://localhost:5000/public/uploads', {
     method: 'POST',
     body: formData
   })
@@ -140,8 +141,8 @@ const Camera = () => {
   console.log(res);
 
   // display uploaded picture
-  savedPicture.current.src = '/uploads/' + res.file.name
-  console.log('upload picture function')
+  savedPicture.current.src = 'http://localhost:5000/public/uploads' + res.file.name
+ 
   }
 
   const dataURItoBlob = (dataURI) => {
@@ -154,12 +155,13 @@ const Camera = () => {
     }
     let blob = new Blob([ab], {type: mimeString});
     return blob;
+    console.log('dataURItoBlob')
   }
   return (
     <>
       <div>
         <video ref={videoPlayer} id="player" autoPlay style={{ display: 'block'}}></video>
-        <canvas ref={canvas} id="canvas" width="240px" height="240px"></canvas>
+        <canvas ref={canvas} id="canvas" width="360px" height="300px"></canvas>
       </div>
 
       <div className='camera-btns'>
