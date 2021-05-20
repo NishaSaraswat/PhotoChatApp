@@ -1,6 +1,10 @@
 import React from 'react';
 import axios from "axios";
 import {Box,Button,TextField} from "@material-ui/core";
+import Header from '../Components/Header'
+
+
+
 
 function Loginpage(props) {
     
@@ -25,7 +29,9 @@ function Loginpage(props) {
     };
 
     return (
-        <div style={{textAlign:"center",lineHeight:"30px",backgroundColor:"white", fontSize:"12px",width:"240px",height:"350px",paddingLeft:"22px",marginLeft:"9px",marginTop:"100px",borderRadius:"15px"}}>
+        <>
+        <Header/>
+        <div style={{textAlign:"center",lineHeight:"30px",backgroundColor:"white", fontSize:"12px",width:"240px",height:"350px",paddingLeft:"22px",marginLeft:"9px",borderRadius:"15px"}}>
          <h1 style={{paddingTop:'30px',color:"ThreeDDarkShadow",marginRight:"25px"}}>Log In</h1> 
          <TextField   style={{marginRight:"20px",height:"40px",width:"200px",borderRadius:"8px"}} type = "text"  label="Enter your email"  name="name" ref={emailRef}></TextField>
          <br></br><br></br>
@@ -39,6 +45,7 @@ function Loginpage(props) {
           onClick={loginUser}>SignIn</Button>
           </Box>
         </div>
+        </>
     )
 }
 export default Loginpage;
