@@ -1,0 +1,24 @@
+.post-header{
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+.post-avatar{
+    margin-right: 10px;
+}
+
+.post-image{
+    width: 100%;
+    object-fit: contain;
+}
+
+.post{
+    margin: 0;
+    border-bottom:white solid 1px;
+  }
+
+  .post-text{
+      font-weight: normal;
+  }
+  
