@@ -4,12 +4,13 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from "./Pages/LoginPage";
 import ProfilePage from './Pages/ProfilePage';
 import Home from './Pages/HomePage';
+import ImagesPage from './Pages/ImagesPage';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <h1>Photo Chat App</h1>
+        {/* <h1>Photo Chat App</h1> */}
         <>
             <Switch>
               <Route exact path="/" component={Home}/>
@@ -17,6 +18,7 @@ function App() {
               <Route exact path='/profile' component={ProfilePage}/>
               {/*<Route exact path='/register' component={RegisterUser}/>
               */}
+              <Route exact path='/images' component={ImagesPage}/>
             </Switch>
         </>
         </Router>
