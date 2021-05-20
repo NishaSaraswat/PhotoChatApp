@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-
 .profilePage {
   text-align: center;
   color:rgb(223, 219, 219);
@@ -8,7 +5,7 @@
 .avatar-spaceholder{
   width:50%;
   margin-top: 5%;
-=======
+}
 body{
   background-color: #0C0B0B;
   margin: 0;
@@ -17,7 +14,6 @@ body{
 .App {
   /* text-align: center; */
   color:rgb(224, 221, 221);
->>>>>>> Hille-ShowProfileImage
 }
 
 .camera-icon{
@@ -55,7 +51,6 @@ body{
   transform: scale(-1, 1);
 }
 
-<<<<<<< HEAD
 .camera-btns{
   display:flex;
   flex-direction: row;
@@ -71,7 +66,7 @@ body{
   background-color: rgb(24, 23, 23);
   color:rgb(224, 220, 220);
 }
-=======
+
 #canvas, #new-capture-btn {
   display: none;
 }
@@ -87,4 +82,3 @@ body{
   object-fit: contain;  /*so the logo don't stretch*/
   justify-content: right;
 }
->>>>>>> Hille-ShowProfileImage
