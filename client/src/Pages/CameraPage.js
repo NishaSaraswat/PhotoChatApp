@@ -3,8 +3,9 @@ import Camera from '../Components/Camera'
 
 const CameraPage = () => {
     return (
-        <div>
+        <div className='camera-page'>
             <Camera />
+            
         </div>
     )
 }
