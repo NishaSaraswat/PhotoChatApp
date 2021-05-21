@@ -1,39 +1,80 @@
-import React from 'react';
+import React, {useState}from 'react';
 import axios from "axios";
+import {Box,Button,TextField} from "@material-ui/core";
+import Header from '../Components/Header'
+import {setUserSession} from '../utils/common'
+import '../RegisterStyles/registerStyles.css'
+
+
+
 
 function Loginpage(props) {
     
-    const emailRef = React.createRef();
-    const passwordRef = React.createRef();
+    // const emailRef = React.createRef();
+    // const passwordRef = React.createRef();
+
+        const [loading, setLoading] = useState(false);
+        const email = useFormInput('');
+        const password = useFormInput('');
+        const [error, setError] = useState(null);
+ 
 
     const loginUser = ()=>{
        
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
+        // const email = emailRef.current.value;
+        // const password = passwordRef.current.value;
+        setError(null);
+        setLoading(true);
         axios.post("http://localhost:5000/api/login",{
-            email,
-            password
-        }).then(response=>{
-            response = response.data;
-            console.log(response.data);
-            // localStorage.setItem("token",response.data.token);
-            // props.history.push("/profile");
-        }).catch(err=>{
-          err = err.response.data;
-        });
+            // email,
+            // password
+            email: email.value, password: password.value }).then(response => {
+                setLoading(false);
+                setUserSession(response.data.token, response.data.user);
+                props.history.push("/profile");
+        }).catch(error => {
+            setLoading(false);
+            if (error.response.status === 401) setError(error.response.data.message);
+            else setError("Something went wrong. Please try again later.");
+          });
+        // .then(response=>{
+        //     response = response.data;
+        //     console.log(response.data);
+        //     localStorage.setItem("token",response.data.token);
+        //     props.history.push("/profile");
+        // }).catch(err=>{
+        //   err = err.response.data;
+        // });
     };
 
     return (
-        <div>
-         <h1>Log in page</h1> 
-         <label>Email</label>
-         <input type = "text" placeholder="Enter your email" name="name" ref={emailRef}></input>
+        <>
+        <Header/>
+        <div className ="form" style={{textAlign:"center",lineHeight:"12px", fontSize:"12px",width:"240px",height:"350px",paddingLeft:"22px",marginLeft:"20px",borderRadius:"15px"}}>
+         <h1 style={{color:"ThreeDDarkShadow",marginLeft:"-28px",color:"yellow"}}>Log In</h1> 
+         <TextField   style={{marginTop:"25px",marginRight:"30px",height:"40px",width:"200px",borderRadius:"8px",color:"white"}} type = "email"  placeholder="Enter your email"  name="name" {...email}></TextField>
          <br></br><br></br>
-         <label>Password </label>
-         <input type = "password" placeholder="password" name="password"  ref={passwordRef}></input>
+         <TextField style={{marginRight:"20px",height:"40px",width:"200px",borderRadius:"8px",color:"white"}} type = "password" placeholder="Enter password" name="password"  {...password}></TextField>
          <br></br><br></br>
-         <button onClick={loginUser}>SignIn</button>
+         <Box style={{marginTop:"5px",marginRight:"40px",backgroundColor:"yellow",color:"green",fontSize:"1.2em"}} clone>
+         <Button
+            variant = "contained"
+             size="large"
+          onClick={loginUser}>SignIn</Button>
+          </Box>
         </div>
-    )
+        </>
+    );
 }
+const useFormInput = initialValue => {
+    const [value, setValue] = useState(initialValue);
+   
+    const handleChange = e => {
+      setValue(e.target.value);
+    }
+    return {
+      value,
+      onChange: handleChange
+    }
+  }
 export default Loginpage;
