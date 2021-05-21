@@ -7,10 +7,8 @@ const Header = () => {
              <img src={Logo} alt="logo" style={{marginLeft:"25px",
              position:'relative',
              height:'150px',
-             marginBottom:"90px",
+             marginBottom:"40px",
              boxSizing:"border-box",
-            
-             
              }}></img>
         </div>
     )

@@ -4,7 +4,8 @@ body {
 }
 * {box-sizing: border-box;}
 h1 {
-    color: blanchedalmond;
+    color: yellow;
+   
 }
 
 
@@ -16,17 +17,17 @@ h1 {
     padding: 40px;
     box-sizing: border-box;
     margin: auto;
+    margin-top: -60px;
     font-size: .95em;
    
 
   }
-  .form label{
+  /* form label{
     line-height: 150%;
     margin: 5px 10px 5px 15px;
-    color: #fff;
+    color: #fff; 
 
-
-  }
+  } */
   .form input {
     display: block;
     width: 100%;
@@ -35,26 +36,29 @@ h1 {
     padding: 15px;
     background-color: rgba(120, 109, 109, 0.399);
     color: #fff;
+  
+    
 
   }
   .form button {
     margin: auto;
-    margin-top: 25px;
+    margin-top: 10px;
     width: 100%;
     border-radius: 25px;
     border:  black;
     padding: 15px;
-    background-color:   rgba(120, 109, 109, 0.399);
-    color: blanchedalmond;
+    background-color:  yellow;
+    color: green;
     font-size: .95em;
   }
   .form button:hover {
     background-color: rgb(225, 89, 65);
+    color: white;
   }
   /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
 @media (max-width: 800px) {
     .form input {
-      margin: 10px 0;
+      margin: 0;
     }
   
     .form {

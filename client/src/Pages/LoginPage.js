@@ -3,6 +3,7 @@ import axios from "axios";
 import {Box,Button,TextField} from "@material-ui/core";
 import Header from '../Components/Header'
 import {setUserSession} from '../utils/common'
+import '../RegisterStyles/registerStyles.css'
 
 
 
@@ -49,17 +50,16 @@ function Loginpage(props) {
     return (
         <>
         <Header/>
-        <div style={{textAlign:"center",lineHeight:"30px",backgroundColor:"white", fontSize:"12px",width:"240px",height:"350px",paddingLeft:"22px",marginLeft:"9px",borderRadius:"15px"}}>
-         <h1 style={{paddingTop:'30px',color:"ThreeDDarkShadow",marginRight:"25px"}}>Log In</h1> 
-         <TextField   style={{marginRight:"20px",height:"40px",width:"200px",borderRadius:"8px"}} type = "email"  label="Enter your email"  name="name" {...email}></TextField>
+        <div className ="form" style={{textAlign:"center",lineHeight:"12px", fontSize:"12px",width:"240px",height:"350px",paddingLeft:"22px",marginLeft:"20px",borderRadius:"15px"}}>
+         <h1 style={{color:"ThreeDDarkShadow",marginLeft:"-28px",color:"yellow"}}>Log In</h1> 
+         <TextField   style={{marginTop:"25px",marginRight:"30px",height:"40px",width:"200px",borderRadius:"8px",color:"white"}} type = "email"  placeholder="Enter your email"  name="name" {...email}></TextField>
          <br></br><br></br>
-         <TextField style={{marginRight:"20px",height:"40px",width:"200px",borderRadius:"8px"}} type = "password" label="Enter password" name="password"  {...password}></TextField>
+         <TextField style={{marginRight:"20px",height:"40px",width:"200px",borderRadius:"8px",color:"white"}} type = "password" placeholder="Enter password" name="password"  {...password}></TextField>
          <br></br><br></br>
-         <Box style={{marginTop:"20px",marginRight:"20px",backgroundColor:"yellow",color:"green"}} clone>
+         <Box style={{marginTop:"5px",marginRight:"40px",backgroundColor:"yellow",color:"green",fontSize:"1.2em"}} clone>
          <Button
             variant = "contained"
              size="large"
-             color = "primary"
           onClick={loginUser}>SignIn</Button>
           </Box>
         </div>
