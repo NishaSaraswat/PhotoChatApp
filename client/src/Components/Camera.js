@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const Camera = () => {
 
-  let picture;
-  let address;
+  let [picture, setPicture]=useState()
+  let [address, setAddress]=useState()
   let fetchedLocation = { lat: 0, lng: 0 };
   let [imageURL, setImageURL]=useState('')
 
@@ -19,9 +19,6 @@ const Camera = () => {
   const locationBtn=useRef()
   const savedPicture=useRef()
   
-  const toggleDisplay = (elementItem, displayStatus) => {
-    elementItem.style = { display: displayStatus };
-  }
 
   useEffect(() => {
     initializeMedia();
@@ -70,27 +67,18 @@ const Camera = () => {
     videoPlayer.current.style.display = 'none';
     captureButton.current.style.display = 'none';
     newCaptureButton.current.style.display = 'block';
-
-  // take the image from the videoplayer and add to the canvas
-  // to enable converting the image to a blob (file)
-  //let context = canvasElement.current.getContext('2d');
-  //context.drawImage(videoPlayer, 0, 0, canvas.width, videoPlayer.videoHeight / (videoPlayer.videoWidth / canvas.width));
-  const ctx = canvas.current.getContext('2d');
-// Draw the current frame from the video on the canvas.
+    const ctx = canvas.current.getContext('2d');
     ctx.drawImage(videoPlayer.current, 0, 0, canvas.current.width, canvas.current.height);
-  console.log('capture image')
-  // stop player
-  videoPlayer.current.srcObject.getVideoTracks().forEach(function (track) {
-    track.stop();
-  });
+    videoPlayer.current.srcObject.getVideoTracks().forEach(function (track) {
+      track.stop();
+    });
+    setPicture(dataURItoBlob(canvas.current.toDataURL('image/jpeg', 0.8)));
+    
+    }
 
-  // store picture blob in variable, and set quality to 80%
-  // to decrease file-size
-  picture = dataURItoBlob(canvas.current.toDataURL('image/jpeg', 0.8));
-  }
-
+    console.log(picture);
   const pickImage = (e) => {
-    picture=e.target.files[0]
+    setPicture(e.target.files[0])
   }
 
   const getGeolocation = () => {
@@ -121,8 +109,6 @@ const Camera = () => {
     console.log(err);
     alert('Couldn\'t fetch location!');
     fetchedLocation = {lat: 0, lng: 0};
-
-    // timeout: amount of time before the error callback is invoked
   }, {timeout: 7000});
   }
 
@@ -131,18 +117,17 @@ const Camera = () => {
     formData.append('file', picture, Date.now() + '.jpg')
     formData.append('location', JSON.stringify(fetchedLocation))
     formData.append('address', JSON.stringify(address))
-
-  let res = await fetch('http://localhost:5000/public/uploads', {
-    method: 'POST',
-    body: formData
-  })
-
-  res = await res.json()
-  console.log(res);
+    let res = await fetch('http://localhost:5000/api/uploadedphotos', {
+      method: 'POST',
+      //headers: {"Content-type": "application/json; charset=UTF-8"},
+      body: formData
+    })
+    res = await res.json()
+    console.log(res)
 
   // display uploaded picture
-  savedPicture.current.src = 'http://localhost:5000/public/uploads' + res.file.name
- 
+  savedPicture.current.src = 'http://localhost:5000/api/uploadedphotos/' + res.file.name
+  console.log(savedPicture)
   }
 
   const dataURItoBlob = (dataURI) => {
@@ -155,13 +140,12 @@ const Camera = () => {
     }
     let blob = new Blob([ab], {type: mimeString});
     return blob;
-    console.log('dataURItoBlob')
   }
   return (
     <>
       <div>
         <video ref={videoPlayer} id="player" autoPlay style={{ display: 'block'}}></video>
-        <canvas ref={canvas} id="canvas" width="360px" height="300px"></canvas>
+        <canvas ref={canvas} id="canvas" width="330px" height="300px"></canvas>
       </div>
 
       <div className='camera-btns'>
@@ -173,7 +157,7 @@ const Camera = () => {
       </div>
 
         <div id="pick-image" ref={imagePickerArea}>
-          <input type="file" accept="image/*" id="image-picker" onChange={pickImage} ref={imagePicker}/>
+          <input type="file" accept="image/*" id="image-picker" onChange={pickImage} ref={imagePicker} />
         </div>
        {/*<p>Saved picture:</p>*/ } 
         <img id="saved-picture" ref={savedPicture}/>

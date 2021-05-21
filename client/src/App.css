@@ -1,19 +1,23 @@
 
 
-.profilePage {
+.profilePage,
+.camera-page {
   text-align: center;
+  background-color: #050707;
   color:rgb(223, 219, 219);
 }
+
 .avatar-spaceholder{
-  width:50%;
-  margin-top: 5%;
+  width:60%;
+  border-radius: 50%;
+  margin-top: 10%;
+  margin-left: 5%;
 }
 
 .camera-icon{
   width:30px;
   height:30px;
-  margin-left: -20px;
-  margin-top: 30px;
+  margin-left: -30px;
 }
 .profilePage-btns{
   display:flex;
@@ -21,6 +25,8 @@
   flex-wrap: wrap;
   width:80%;
   margin-left: 10%;
+  margin-top: 30%;
+  padding-bottom: 25%;
 }
 
 .profilePage-btns button{
@@ -49,11 +55,12 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 8%;
+  margin-top: 70%;
   margin-bottom: 5%;
   width:100%;
 }
-.camera-btns button{
+.camera-btns button
+{
   height:80px;
   width:100px;
   background-color: rgb(24, 23, 23);
