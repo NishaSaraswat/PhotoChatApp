@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 const Camera = () => {
 
   let [picture, setPicture]=useState()
+  let [savedPictures, setSavedPictures]=useState([])
   let [address, setAddress]=useState()
   let fetchedLocation = { lat: 0, lng: 0 };
   let [imageURL, setImageURL]=useState('')
@@ -73,12 +74,13 @@ const Camera = () => {
       track.stop();
     });
     setPicture(dataURItoBlob(canvas.current.toDataURL('image/jpeg', 0.8)));
-    
+    setSavedPictures([...savedPictures, picture])
     }
 
     console.log(picture);
   const pickImage = (e) => {
     setPicture(e.target.files[0])
+    setSavedPictures([...savedPictures, picture])
   }
 
   const getGeolocation = () => {
@@ -117,7 +119,7 @@ const Camera = () => {
     formData.append('file', picture, Date.now() + '.jpg')
     formData.append('location', JSON.stringify(fetchedLocation))
     formData.append('address', JSON.stringify(address))
-    let res = await fetch('http://localhost:5000/api/uploadedphotos', {
+    let res = await fetch('/api/uploadedphotos', {
       method: 'POST',
       //headers: {"Content-type": "application/json; charset=UTF-8"},
       body: formData
@@ -159,7 +161,7 @@ const Camera = () => {
         <div id="pick-image" ref={imagePickerArea}>
           <input type="file" accept="image/*" id="image-picker" onChange={pickImage} ref={imagePicker} />
         </div>
-       {/*<p>Saved picture:</p>*/ } 
+        <p>Saved picture:</p>
         <img id="saved-picture" ref={savedPicture}/>
       
 

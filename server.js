@@ -27,8 +27,7 @@ app.post('/api/uploadedphotos', (req, res) => {
       return;
     }
 
-    fields.location && console.log('location', JSON.parse(fields.location));
-    fields.address && console.log('address', JSON.parse(fields.address));
+  
 
     // get the file, from file
     file = file.file
