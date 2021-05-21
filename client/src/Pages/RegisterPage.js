@@ -1,5 +1,9 @@
 import React from 'react'
 import axios from "axios";
+import '../RegisterStyles/registerStyles.css'
+import Header from '../Components/Header';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { Link } from "react-router-dom"
 
  function Registerpage(props) {
      const nameRef = React.createRef();
@@ -21,24 +25,26 @@ import axios from "axios";
            err = err.response.data;
          });
      };
+     const gobackToLogin=()=>{
+        <Link to="/login"></Link>
+     }
     return (
-        <div>
+        <>
+        <Header/>
+        <div className='form'>
             <h1>Register here</h1>
-            <label>Name </label>
             <input type = "text" 
                 placeholder="Enter your Name"
                 name="name"
                 ref={nameRef}>
             </input>
             <br></br><br></br>
-            <label>Email </label>
             <input type = "emil" 
                 placeholder="example@gmail.com" 
                 name="email" 
                 ref={emailRef}>
             </input>
             <br></br><br></br>
-            <label>Password </label>
                 <input type = "password" 
                 placeholder="password" 
                 name="password"
@@ -47,6 +53,8 @@ import axios from "axios";
             <br></br><br></br>
             <button onClick={registerUser}>Register</button>
         </div>
+        <ArrowBackIcon style={{marginLeft:"50px"}} onClick={gobackToLogin}/>
+       </ >
     )
 }
 export default Registerpage
