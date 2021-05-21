@@ -11,7 +11,6 @@ const ProfilePage = (props) => {
     console.log(props)
     return (
         <>
-        <Header/>
         <div className="profilePage">
             
             <img src={avatar} alt="avatar-spaceholder" className="avatar-spaceholder"/>
